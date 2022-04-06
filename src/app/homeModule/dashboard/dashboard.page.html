@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+    <ion-title>DashBoard</ion-title>
+  </ion-toolbar>
+    <ion-row class="ion-no-padding" >
+    <ion-col  class="ion-no-padding customBg2">
+      <ion-item class="mlr15 mb10 br15" >
+        <ion-input [(ngModel)]="location" (ngModelChange)="searchLoation(location)" placeholder="Your location"></ion-input>
+        <img src="./assets/pin.png" class="pinIcon"  slot="start"  />
+      </ion-item>
+      
+      <ion-list *ngIf="addressArr && addressArr?.length>=1">
+      <ion-item *ngFor="let loc of addressArr" (click)="selectedLoc(loc,  loc.postalCode)">
+        <ion-avatar slot="start">
+          <img src="./assets/loc.png" />
+        </ion-avatar>
+        <ion-label>
+          <h3>{{loc?.areasOfInterest[0]}} {{loc?.subLocality}} {{loc?.locality}}</h3>
+          <p>{{loc?.subAdministrativeArea}} {{loc?.administrativeArea}} {{loc?.postalCode}} {{loc?.countryName}}</p>
+        </ion-label>
+      </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content class="customContentBg">
+
+
+
+  <ion-row (click)="searchShopFun()">
+    <ion-col >
+      <ion-item class="mlr15 mb10 br15 searchField themeShadow" >
+        <ion-input placeholder="Enter shop name" [disabled]="true"></ion-input>
+        <ion-icon name="search" slot="end"></ion-icon>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  
+  <div  *ngFor="let data of allData" class="customCard" (click)="patient(data)">
+    <ion-row>
+      <ion-col [size]="4"><img [src]="data?.shopImg" class="shopImg" onerror="this.src='./assets/noImageFound.png'" /></ion-col>
+      <ion-col [size]="6">
+        <p class="shop_name"> <span> {{data?.shop_name}}</span></p>
+        <p class="staff_name">Owner: <span> {{data?.owner_name}}</span></p>
+        <p class="more">More Details</p>
+        
+      </ion-col>
+      <ion-col [size]="2">
+        <p class="time">{{data?.shopTimming}} </p>
+        <img src="./assets/dist2.jpg" class="distIcon"/>
+      </ion-col>
+      <ion-col [size]="6">
+        
+        <ion-icon name="star-half" class="halfFillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <span class="rating">User Rating:</span> 
+      </ion-col>
+      <ion-col [size]="6">
+        <!-- <p class="distance" [innerHtml]="distanceCal(data?.lat, data?.long)"> </p> -->
+        <p class="distance">Distance: <span> {{data?.distance}}</span> </p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <p *ngIf="allData?.length<1" class="ion-text-center">No shop available</p>
+  <!-- <div  *ngFor="let data of allData" class="customCard" (click)="patient()">
+    <ion-row>
+      <ion-col [size]="4"><img [src]="data?.shopImg" class="shopImg"/></ion-col>
+      <ion-col [size]="6">
+        <p class="shop_name"> <span> {{data?.ShopName}}</span></p>
+        <p class="staff_name">Staff Name: <span> {{data?.staffName}}</span></p>
+        <p class="more">More Details</p>
+        
+      </ion-col>
+      <ion-col [size]="2">
+        <p class="time">{{data?.time}} </p>
+        <img src="./assets/dist2.jpg" class="distIcon"/>
+      </ion-col>
+      <ion-col [size]="6">
+        
+        <ion-icon name="star-half" class="halfFillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <span class="rating">User Rating:</span> 
+      </ion-col>
+      <ion-col [size]="6">
+        <p class="distance">Distance: <span> {{data?.distance}}</span> </p>
+      </ion-col>
+    </ion-row>
+  </div> -->
+ 
+</ion-content>

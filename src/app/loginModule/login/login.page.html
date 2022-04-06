@@ -1,0 +1,53 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="customBg">
+  <!-- <ion-button (click)="toggleMenu()">Toggle Menu</ion-button> -->
+<img src="./assets/1.png" class="clientLogo centerData"/>
+<div class="fieldsContainer"><br>
+  <ion-row>
+    <ion-col [size]="5" class="temp_label ion-margin-vertical"><ion-icon name="person"></ion-icon> Enter User Name</ion-col>
+    <ion-col [size]="7"><ion-input class="textLeft" [(ngModel)]="userName" autocomplete="off"></ion-input></ion-col>
+  </ion-row>
+  <ion-row  >
+    <ion-col  [size]="5" class="temp_label ion-margin-vertical" style="margin-top: 35px;">
+      <ion-icon name="lock-closed-outline"></ion-icon> Enter Password
+    </ion-col>
+    <ion-col  [size]="7" class=" ion-margin-vertical">
+      <ion-input class="textLeft" [(ngModel)]="password" type="password" autocomplete="off"></ion-input>
+      <!-- <ion-row>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num1" id="num1" (ngModelChange)="moveToNext('num2')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num1')" autocomplete="off"> </ion-col>
+        <ion-col [size]="3"><input type="text"  [(ngModel)]="num2" id="num2" (ngModelChange)="moveToNext('num3')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num2')" autocomplete="off"> </ion-col>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num3"  id="num3" (ngModelChange)="moveToNext('num4')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num3')" autocomplete="off"> </ion-col>
+        <ion-col [size]="3"> <input type="text"  [(ngModel)]="num4" id="num4" (ngModelChange)="moveToNext('num1')"  maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num4')" autocomplete="off"> </ion-col>
+      </ion-row> -->
+      
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col>
+      <p class="fp ion-no-margin">forget password</p>
+      <br><br>
+    </ion-col>
+  </ion-row> -->
+
+</div>
+
+<ion-row>
+  <ion-col>
+    <p class="newUsr ion-no-margin" (click)="goToSignup()">Create new user <span>SignUp</span></p>
+    <br><br>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col class="ion-text-center">
+    <!-- <ion-button color="warning" [disabled]="userName.trim().length<1 || num1.trim().length<1 || num2.trim().length<1 || num3.trim().length<1 || num4.trim().length<1 " shape="round" type="submit"  (click)="callLoginFun()">Login</ion-button> -->
+      <ion-button color="warning" [disabled]="userName==null ||  userName.toString().trim().length<1 || password.trim().length<1 || btnText!='Login' " shape="round" type="submit"  (click)="callLoginFun()">{{btnText}}</ion-button>
+
+  </ion-col>
+</ion-row>
+
+</ion-content>

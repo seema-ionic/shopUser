@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "475768889243",
+    "project_id": "benepik-one",
+    "storage_bucket": "benepik-one.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475768889243:android:b3e50ab624d2c04debcb3e",
+        "android_client_info": {
+          "package_name": "connect.benepikone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475768889243-ih9qfhq065aosbhecr4t3eaksr6gmlgv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9ILiefiF1pfurIzNS4S8wJlCrQsP30TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475768889243-ih9qfhq065aosbhecr4t3eaksr6gmlgv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

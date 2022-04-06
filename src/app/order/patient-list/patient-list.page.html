@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+  </ion-buttons>
+    <ion-title>Patient List</ion-title>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content>
+
+
+  <div  *ngFor="let data of allData;let ind=index" class="customCard" >
+    <ion-row>
+      <ion-col  [size]="10" (click)="patient(data)">
+        <p class="patient_name">Patient :  {{data.patient_name}}</p>
+        <p class="order_id"> Order Id : {{data.order_id}}</p>
+        <p class="order_date">Order Date : {{data.order_date}}</p>
+        
+      </ion-col>
+      <ion-col  [size]="2" (click)="expandDIV(ind)" class="ion-padding-vertical">
+        <img *ngIf="selectedDiv!=ind"  src="./assets/downArrow.png" class="arrowIcon ion-padding-vertical"/>
+        <img *ngIf="selectedDiv==ind" src="./assets/upArrows.png" class="arrowIcon ion-padding-vertical   "/>
+        <!-- <ion-icon *ngIf="selectedDiv!=ind" name="arrow-down"  class="ion-padding-vertical"></ion-icon>
+        <ion-icon *ngIf="selectedDiv==ind" name="arrow-up"  class="ion-padding-vertical"></ion-icon> -->
+      </ion-col>
+    </ion-row>
+      <div *ngIf="selectedDiv==ind">
+        <ion-row>
+        <ion-col [size]="6"><img [src]="data?.front_image" class="shopImg" onerror="this.src='./assets/noImageFound.png'" ></ion-col>
+        <ion-col [size]="6"><img [src]="data?.back_image" class="shopImg" onerror="this.src='./assets/noImageFound.png'" ></ion-col>
+      </ion-row>
+     </div>
+
+    </div>
+
+
+</ion-content>

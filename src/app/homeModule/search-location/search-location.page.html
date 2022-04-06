@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+  </ion-buttons>
+  <ion-buttons slot="end">
+    <ion-button (click)="refereshLoc()" fill="clear" ><ion-icon name="refresh-circle" style=" font-size: 33px; color: #fff;  "></ion-icon></ion-button>
+    
+</ion-buttons>
+    <ion-title>Address</ion-title>
+  </ion-toolbar>
+  
+  <ion-row class="ion-no-padding">
+    <ion-col  class="ion-no-padding customBg2">
+      <ion-item class="mlr15 mb10 br15" >
+        <ion-input [(ngModel)]="location" placeholder="Search location..." (ngModelChange)="findLoaction(location)" ></ion-input>
+        <img src="./assets/pin.png" class="pinIcon"  slot="start"  />
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</ion-header>
+
+<ion-content>
+    <div #map id="map"></div>
+</ion-content>

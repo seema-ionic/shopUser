@@ -1,0 +1,307 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+  </ion-buttons>
+    <ion-title>Patient Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-row>
+      <ion-col [size]="12" class="colss">
+        <img src="./assets/tempFolder/medi.jpg" class="distIcon" onerror="this.src='./assets/noImageFound.png'"  />
+      </ion-col>
+      <!-- <ion-col [size]="6" class="colss colclr">
+        <p class="para">PX</p>
+        <p class="parasecond">{{previousePageData?.shop_name}}</p>
+        <p class="parathird">{{previousePageData?.address}}</p>
+        <p class="parafourth">Powerd by: {{previousePageData?.owner_name}}</p>
+      </ion-col> -->
+    </ion-row>
+  </div>
+  <div class="customBg paddcss">
+    <ion-row>
+      <ion-col [size]="12">
+        <p class="paraseven">Patient Name</p>
+        <!-- <ion-input class="textLeft" placeholder="Enter patient name" [(ngModel)]="userName" autocomplete="off" [disabled]="true">
+        </ion-input> -->
+        
+        <div class="pt_name"  [innerHTML]="userName"> </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col [size]="6">
+        <p class="paraeiht">Do you want to have prescription</p>
+      </ion-col>
+      <ion-col [size]="6">
+        <ion-row class="ion-margin-bottom ion-padding-bottom">
+          <ion-col [size]="12" class="padleft">
+            <ion-radio-group name="radio-group"  [(ngModel)]="isPrescriptionAvailable" >
+              <ion-row>
+                <ion-col [size]="6">
+                  <ion-label class="lblclr">Yes</ion-label>&nbsp;&nbsp;
+                  <ion-radio value="1" [disabled]="true" ></ion-radio>
+                </ion-col>
+                <ion-col [size]="6">
+                  <ion-label class="lblclr">No</ion-label>&nbsp;&nbsp;
+                  <ion-radio value="0" [disabled]="true" ></ion-radio>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="isPrescriptionAvailable=='1'">
+      <ion-col [size]="6">
+        <p class="upload">Upload Priscription</p>
+      </ion-col>
+      <ion-col [size]="6" class="paddleft">
+        <ion-icon name="download-outline" style="font-size: 17px;"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div  *ngIf="isPrescriptionAvailable=='1'" class="customlihtBg paddcss">
+    <ion-row>
+      <ion-col [size]="6" class="mrauto ion-text-center">
+        <!-- <div *ngIf="frontPreception_ImgPath==''" class="customCard cam">
+          <p class="campara" (click)="chooseOption('front')">
+            <ion-icon name="camera-outline" style="font-size: 30px;"></ion-icon>
+          </p>
+          <input type="file" id="frontPreceptionImg"  accept="image/*"  #frontPreceptionImg (change)="uploadFile($event.target.files, 'frontPreceptionImg')"  class="displayNone">
+        </div> -->
+       
+        <div *ngIf="frontPreception_ImgPath!=''" class="customCardim">
+          <img [src]="frontPreception_ImgPath" class="discim" onerror="this.src='./assets/noImageFound.png'" />
+          <!-- <ion-icon name="close-outline" class="closeBtn" (click)="removeImg('front')"></ion-icon> -->
+        </div>
+
+        <ion-button size="small" shape="round" type="submit">Front page</ion-button>
+      </ion-col>
+      <ion-col [size]="6" class="mrauto ion-text-center">
+
+        <!-- <div *ngIf="backPreception_ImgPath==''" class="customCard cam">
+          <p class="campara" (click)="chooseOption('back')">
+            <ion-icon name="camera-outline" style="font-size: 30px;"></ion-icon>
+          </p>
+        </div> -->
+        <div *ngIf="backPreception_ImgPath!=''" class="customCardim">
+          <img [src]="backPreception_ImgPath" class="discim" onerror="this.src='./assets/noImageFound.png'" />
+          <!-- <ion-icon name="close-outline"  class="closeBtn" (click)="removeImg('back')"></ion-icon> -->
+        </div>
+
+        <!-- <input type="file" id="backPreceptionImg"  accept="image/*"  #backPreceptionImg (change)="uploadFile($event.target.files, 'backPreceptionImg')" class="displayNone"> -->
+        <ion-button size="small" shape="round" type="submit">Back page</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="isPrescriptionAvailable=='0'"  class="padddiv">
+
+
+    <ion-row>
+      <ion-col [size]="12">
+        <p class="madpara">Enter medicine name & Qty</p>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="isPrescriptionNotAvailableArr && isPrescriptionNotAvailableArr?.length>=1" class="customBg newcustomCard">
+      <ion-row>
+        <ion-col [size]="2"> <p class="frontpara">SR No</p></ion-col>
+        <ion-col [size]="8"> <p class="frontpara"> Madicine name</p> </ion-col>
+        <ion-col [size]="2"> <p class="frontpara">Qty</p> </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let precep_data of isPrescriptionNotAvailableArr">
+        <ion-col [size]="2"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.s_no" [disabled]="true" /> </ion-col>
+        <ion-col [size]="7"><input type="text" class="dynamicField ion-text-start medicineName" [(ngModel)]="precep_data.medicine_name" placeholder="Medicine name" [disabled]="true" /></ion-col>
+        <ion-col [size]="3"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.quantity" placeholder="Qty" [disabled]="true"/></ion-col>
+      </ion-row>
+
+
+      <!-- <ion-row>
+        <ion-col [size]="9">
+        </ion-col>
+        <ion-col [size]="3">
+          <ion-row>
+            <ion-col [size]="6">
+              <div class="crc" (click)="addMdeicineInPreception('preception')">
+                <p class="iconpara">
+                  <ion-icon name="add-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+            <ion-col [size]="6">
+              <div class="crc" (click)="removeMdeicineInPreception('preception')">
+                <p class="iconpara">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row> -->
+
+    </div>
+
+  </div>
+
+
+
+  <div *ngIf="isPrescriptionAvailable=='1' " class="customBg paddcss">
+    <ion-row>
+      <ion-col [size]="6">
+        <p class="mrpara"><span class="paraeiht">All Medicine</span> <span>(has in priscription)</span></p>
+      </ion-col>
+      <ion-col [size]="6">
+        <ion-row>
+          <ion-col [size]="12" class="padleft">
+            <ion-radio-group name="radio-group"  [(ngModel)]="isMedicineQuantity"  >
+              <ion-row>
+                <ion-col [size]="6">
+                  <ion-label class="lblclr">Yes</ion-label>&nbsp;&nbsp;
+                  <ion-radio value="1" [disabled]="true"   ></ion-radio>
+                </ion-col>
+                <ion-col [size]="6">
+                  <ion-label class="lblclr">No</ion-label>&nbsp;&nbsp;
+                  <ion-radio value="0" [disabled]="true" ></ion-radio>
+                </ion-col>
+              </ion-row>
+            </ion-radio-group>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="isPrescriptionAvailable=='1' && isMedicineQuantity=='0' "  class="padddiv">
+
+
+    <ion-row>
+      <ion-col [size]="12">
+        <p class="madpara">Select the front page medicine</p>
+      </ion-col>
+    </ion-row>
+    <div class="customBg newcustomCard">
+      <ion-row>
+        <ion-col [size]="2"> <p class="frontpara">SR No</p></ion-col>
+        <ion-col [size]="8"> <p class="frontpara"> Madicine name/Line No</p> </ion-col>
+        <ion-col [size]="2"> <p class="frontpara">Qty</p> </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let precep_data of notAllMedicine_front">
+        <ion-col [size]="2"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.s_no" [disabled]="true" /> </ion-col>
+        <ion-col [size]="7"><input type="text" class="dynamicField ion-text-start medicineName" [(ngModel)]="precep_data.medicine_name" placeholder="Medicine name" [disabled]="true"/></ion-col>
+        <ion-col [size]="3"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.quantity" placeholder="Qty" [disabled]="true"/></ion-col>
+      </ion-row>
+
+
+      <!-- <ion-row>
+        <ion-col [size]="9">
+        </ion-col>
+        <ion-col [size]="3">
+          <ion-row>
+            <ion-col [size]="6">
+              <div class="crc" (click)="addMdeicineInPreception('medicine_front')">
+                <p class="iconpara">
+                  <ion-icon name="add-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+            <ion-col [size]="6">
+              <div class="crc" (click)="removeMdeicineInPreception('medicine_front')">
+                <p class="iconpara">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row> -->
+
+    </div>
+
+
+
+    
+    <ion-row>
+      <ion-col [size]="12">
+        <p class="madpara">Select the back page medicine</p>
+      </ion-col>
+    </ion-row>
+    <div class="customBg newcustomCard">
+      <ion-row>
+        <ion-col [size]="2"> <p class="frontpara">SR No</p></ion-col>
+        <ion-col [size]="8"> <p class="frontpara"> Madicine name/Line No</p> </ion-col>
+        <ion-col [size]="2"> <p class="frontpara">Qty</p> </ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let precep_data of notAllMedicine_back">
+        <ion-col [size]="2"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.s_no" [disabled]="true" /> </ion-col>
+        <ion-col [size]="7"><input type="text" class="dynamicField ion-text-start medicineName" [(ngModel)]="precep_data.medicine_name" placeholder="Medicine name" [disabled]="true" /></ion-col>
+        <ion-col [size]="3"><input type="tel" class="dynamicField" [(ngModel)]="precep_data.quantity" placeholder="Qty" [disabled]="true"/></ion-col>
+      </ion-row>
+
+
+      <!-- <ion-row>
+        <ion-col [size]="9">
+        </ion-col>
+        <ion-col [size]="3">
+          <ion-row>
+            <ion-col [size]="6">
+              <div class="crc" (click)="addMdeicineInPreception('medicine_back')">
+                <p class="iconpara">
+                  <ion-icon name="add-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+            <ion-col [size]="6">
+              <div class="crc"  (click)="removeMdeicineInPreception('medicine_back')">
+                <p class="iconpara">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row> -->
+
+    </div>
+
+
+  </div>
+
+
+  <div *ngIf="userNotes!=''">
+    <div class="newcustomBg paddcss">
+      <ion-row>
+        <ion-col [size]="12">
+          <p class="notepara">Note</p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="newcustomCardmr">
+      <ion-row>
+        <ion-col [size]="12">
+          
+        <div class="pt_name"  [innerHTML]="userNotes" > </div>
+          <!-- <ion-item>
+            <ion-textarea placeholder="Some Notes" [(ngModel)]="userNotes"></ion-textarea>
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <!-- <ion-row>
+    <ion-col class="ion-text-center">
+
+      <ion-button [disabled]="btnTxt!='Submit'" color="warning" shape="round" type="submit" (click)="submitData()">{{btnTxt}}</ion-button>
+
+    </ion-col>
+  </ion-row> -->
+</ion-content>

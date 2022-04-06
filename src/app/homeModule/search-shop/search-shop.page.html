@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+  </ion-buttons>
+    <ion-title>Search a shop</ion-title>
+  </ion-toolbar>
+  <ion-row >
+    <ion-col class="ion-no-padding customBg2">
+      <ion-item class="mlr15 mb10 br15 searchField themeShadow" >
+        <ion-input [(ngModel)]="shop_name" (ngModelChange)="getData()" placeholder="Enter shop name"></ion-input>
+        <ion-icon name="search" slot="end" (click)="getData()"></ion-icon>
+        <img src="./assets/pin.png" class="pinIcon"  slot="start"  />
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+    <!-- <ion-row class="ion-no-padding" >
+    <ion-col  class="ion-no-padding customBg2">
+      <ion-item class="mlr15 mb10 br15" >
+        <ion-input [(ngModel)]="shop_name"  placeholder="Enter shop name"></ion-input>
+        <img src="./assets/pin.png" class="pinIcon"  slot="start"  />
+        <ion-icon  (click)="getData()" name="search"  slot="end"  style="color:#fff;font-size:33px"></ion-icon>
+      </ion-item>
+    </ion-col>
+  </ion-row> -->
+</ion-header>
+<ion-content class="customContentBg">
+  <p *ngIf="searchingInProgress" class="ion-text-center"> <ion-spinner name="bubbles"></ion-spinner> Searching, please wait...</p>
+  <div  *ngFor="let data of allData" class="customCard" (click)="patient(data)">
+    <ion-row>
+      <ion-col [size]="4"><img [src]="data?.shopImg" class="shopImg" onerror="this.src='./assets/noImageFound.png'" /></ion-col>
+      <ion-col [size]="6">
+        <p class="shop_name"> <span> {{data?.shop_name}}</span></p>
+        <p class="staff_name">Owner: <span> {{data?.owner_name}}</span></p>
+        <p class="more">More Details</p>
+        
+      </ion-col>
+      <ion-col [size]="2">
+        <p class="time">11 hr </p>
+        <img src="./assets/dist2.jpg" class="distIcon"/>
+      </ion-col>
+      <ion-col [size]="6">
+        
+        <ion-icon name="star-half" class="halfFillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <ion-icon  name="star" class="fillStar"></ion-icon>
+        <span class="rating">User Rating:</span> 
+      </ion-col>
+      <ion-col [size]="6">
+        <p class="distance">Distance: <span> {{data?.distance}}</span> </p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <p *ngIf="allData?.length<1" class="ion-text-center">{{msg}}</p>
+
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+  </ion-buttons>
+    <ion-title>My Order</ion-title>
+  </ion-toolbar>
+  
+  <!-- <ion-row>
+    <ion-col size="6"><ion-button color="primary" shape="round" fill="outline" >  <ion-icon slot="start" name="cart" class="headerIcon"></ion-icon> Running</ion-button>  </ion-col>
+    <ion-col  size="6"><ion-button color="primary" shape="round" fill="outline" >  <ion-icon slot="start" name="bookmark" class="headerIcon"></ion-icon> History</ion-button>  </ion-col>
+  </ion-row> -->
+  <ion-segment class="myOrderSegment" (ionChange)="segmentChanged($event)" value="{{selectedSegmaent}}">
+    <ion-segment-button value="running">
+      <ion-label><ion-icon slot="start" name="cart" class="headerIcon"></ion-icon>  Running</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="history">
+      <ion-label> <ion-icon slot="start" name="bookmark" class="headerIcon"></ion-icon> History</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+
+<ion-content class="customContentBg">
+<div *ngIf="selectedSegmaent!='history'">
+  <div *ngFor="let runningOrder of allRunningOrder; let i=index" class="customCard runningOrder" >
+    <ion-row>
+      <ion-col size="4"><img src="{{runningOrder?.shopImg}" class="shopImg"  onerror="this.src='./assets/noImageFound.png'" ></ion-col>
+      <ion-col (click)="seeDetails(runningOrder)" >
+        <p class="orderID">Order ID: {{runningOrder?.order_id}}</p>
+        <p class="orderName">Order Name:  {{runningOrder?.patient_name}}</p>
+        <p class="orderDate">Date:  {{runningOrder?.updatedAt}}</p>
+        <p class="orderStatus">Status: <span>Pending</span>  </p>
+      </ion-col>
+      <ion-col size="3" (click)="trackOrder(runningOrder)" ><img src="" class="track"  onerror="this.src='./assets/track.png'" ></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col ><ion-button fill="outline" size="small" shape="round" color="success" (click)="changeStatus(runningOrder, i)">Change status</ion-button>
+        </ion-col>
+    </ion-row>
+  </div>
+</div>
+  
+<div *ngIf="selectedSegmaent=='history'">
+  <div class="dateHolder">
+    <ion-row>
+      <ion-col size="5">
+        <p>From Date</p>
+        <input type="date" class="searchField" placeholder="YYYY/MMM/DD" [ngModel] ="fromTime | date:'yyyy-MM-dd'" [max]="getToday()" (ngModelChange)="fromTime = $event" >
+      </ion-col>
+      <ion-col size="5">
+        <p>To Date</p>
+        <input type="date" class="searchField" placeholder="YYYY/MMM/DD" [ngModel] ="toTime | date:'yyyy-MM-dd'" [max]="getToday()" (ngModelChange)="toTime = $event">
+      </ion-col>
+      <ion-col size="2" class="ion-padding-vertical">
+        <ion-button color="warning" shape="round" fill="outline" size="small" (click)="getHistory()"> GO </ion-button> 
+      </ion-col>
+    </ion-row>
+  </div>
+    <div *ngFor="let runningOrder of allData" class="customCard historyOrder" (click)="seeDetails(runningOrder)">
+      <ion-row>
+        <ion-col size="4"><img src="{{runningOrder?.shopImg}" class="shopImg"  onerror="this.src='./assets/noImageFound.png'" ></ion-col>
+        <ion-col size="8">
+          <p class="orderID">Order ID: {{runningOrder?.order_id}}</p>
+          <p class="orderName">Order Name:  {{runningOrder?.patient_name}}</p>
+          <p class="orderDate">Date:  {{runningOrder?.updatedAt}}</p>
+          <p class="orderStatus">Status: <span>Pending</span>  </p>
+        </ion-col>
+      </ion-row>
+     
+    </div>
+
+    <ion-row *ngIf="allData?.length<1">
+      <ion-col>
+        <p  class="ion-text-center">No data available</p>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+      <ion-col size="4"><img src="" class="shopImg"  onerror="this.src='./assets/noImageFound.png'" ></ion-col>
+      <ion-col size="8">
+        <p class="orderID">Order ID: 45698</p>
+        <p class="orderName">Order Name: Karthik</p>
+        <p class="orderDate">Date: 10 Jan 2022</p>
+        <p class="orderStatus">Status:  <span>Delivered</span> </p>
+      </ion-col>
+    </ion-row> -->
+ 
+</div>
+</ion-content>

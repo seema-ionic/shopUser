@@ -1,0 +1,7 @@
+{
+  "name": "Yorker_v3",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,109 @@
+<ion-content class="customBg">
+<br><br>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <p class="pageTitle">SignUp</p>
+  
+    </ion-col>
+  </ion-row>
+<div class="fieldsContainer"><br>
+  <ion-row>
+    <ion-col [size]="5" class="temp_label ion-margin-vertical"> Enter Name</ion-col>
+    <ion-col [size]="7"><ion-input class="textLeft"  [(ngModel)]="userName"></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col [size]="5" class="temp_label ion-margin-vertical"> Enter MailId</ion-col>
+    <ion-col [size]="7"><ion-input type="email" class="textLeft"   [(ngModel)]="email" ></ion-input></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col [size]="5" class="temp_label ion-margin-vertical" > Enter Mobile no</ion-col>
+    <ion-col [size]="7">
+      <ion-input type="tel" class="textLeft" [(ngModel)]="mobile"></ion-input>
+    <!-- <br>
+    <ion-row  >
+      <ion-col  [size]="3" class="temp_label ion-margin-vertical ion-no-margin" >
+        Verify OTP
+      </ion-col>
+      <ion-col  [size]="9" class=" ion-no-margin">
+        <ion-row>
+          <ion-col [size]="3"> <input type="text" [(ngModel)]="num13" id="num13" (ngModelChange)="moveToNext('num14')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num13')" > </ion-col>
+          <ion-col [size]="3"><input type="text"  [(ngModel)]="num14" id="num14" (ngModelChange)="moveToNext('num15')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num14')"> </ion-col>
+          <ion-col [size]="3"> <input type="text" [(ngModel)]="num15"  id="num15" (ngModelChange)="moveToNext('num16')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num15')" > </ion-col>
+          <ion-col [size]="3"> <input type="text"  [(ngModel)]="num16" id="num16" (ngModelChange)="moveToNext('num13')"  maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num16')" > </ion-col>
+        </ion-row>
+        
+      </ion-col>
+    </ion-row> -->
+    
+    </ion-col>
+  </ion-row>
+  <ion-row  >
+    <ion-col  [size]="5" class="temp_label ion-margin-vertical" style="margin-top: 35px;">
+       Enter Password
+    </ion-col>
+    <ion-col  [size]="7" class=" ion-margin-vertical">
+      
+      <ion-input class="textLeft" [(ngModel)]="password" type="password" autocomplete="off"></ion-input>
+      <!-- <ion-row>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num5" id="num5" (ngModelChange)="moveToNext('num6')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num5')" > </ion-col>
+        <ion-col [size]="3"><input type="text"  [(ngModel)]="num6" id="num6" (ngModelChange)="moveToNext('num7')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num6')"> </ion-col>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num7"  id="num7" (ngModelChange)="moveToNext('num8')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num7')" > </ion-col>
+        <ion-col [size]="3"> <input type="text"  [(ngModel)]="num8" id="num8" (ngModelChange)="moveToNext('num5')"  maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num8')" > </ion-col>
+      </ion-row> -->
+      
+    </ion-col>
+  </ion-row>
+  <ion-row  >
+    <ion-col  [size]="5" class="temp_label ion-margin-vertical" style="margin-top: 35px;">
+       Confirm Password
+    </ion-col>
+    <ion-col  [size]="7" class=" ion-margin-vertical">
+      <ion-input class="textLeft" [(ngModel)]="confirmPassword" type="password" autocomplete="off"></ion-input>
+      <!-- <ion-row>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num9" id="num9" (ngModelChange)="moveToNext('num10')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num9')" > </ion-col>
+        <ion-col [size]="3"><input type="text"  [(ngModel)]="num10" id="num10" (ngModelChange)="moveToNext('num11')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num10')"> </ion-col>
+        <ion-col [size]="3"> <input type="text" [(ngModel)]="num11"  id="num11" (ngModelChange)="moveToNext('num12')" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num11')" > </ion-col>
+        <ion-col [size]="3"> <input type="text"  [(ngModel)]="num12" id="num12" (ngModelChange)="moveToNext('num9')"  maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" (focus)="makeEmpty('num12')" > </ion-col>
+      </ion-row> -->
+      
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col [size]="5" class="temp_label ion-margin-vertical"> Pin code</ion-col>
+    <ion-col [size]="7"><ion-input type="tel" class="textLeft"   [(ngModel)]="pincode" ></ion-input></ion-col>
+  </ion-row>
+
+  <ion-row  >
+    <ion-col  [size]="5" class="temp_label ion-margin-vertical" style="margin-top: 35px;">
+       Address
+    </ion-col>
+    <ion-col  [size]="7" class=" ion-margin-vertical">
+      <ion-textarea class="textLeft width100" rows="5" [(ngModel)]="address"  autocomplete="off"></ion-textarea>
+           
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row>
+    <ion-col>
+      <p class="fp ion-no-margin">forget password</p>
+      <br><br>
+    </ion-col>
+  </ion-row> -->
+
+</div>
+
+<ion-row>
+  <ion-col class="ion-text-center">
+    <ion-button color="warning" [disabled]="userName.trim().length<1 || email.trim().length<1  || password.trim().length<1 || confirmPassword.trim().length<1 || address.trim().length<1 || btnText!='Submit'  " shape="round" type="submit" (click)="signUpFun()" >Submit</ion-button>
+
+  </ion-col>
+</ion-row>
+<br>
+<ion-row>
+  <ion-col>
+    <p class="newUsr ion-no-margin" (click)="goBack()">Already user,  <span>Login</span></p>
+    <br><br>
+  </ion-col>
+</ion-row>
+
+</ion-content>

@@ -1,0 +1,14 @@
+.clientLogo{width:40%;  margin-top: 60px;  margin-bottom: 33px;}
+.fieldsContainer{ border: 1px solid rgb(255 255 255 / 30%); padding: 12px; border-radius: 20PX; color: #fff;margin: 20px;}
+.temp_label{ font-size: 12px;}
+input, ion-input{  background: #fff;   border-radius: 10px;
+      color:#444 !important;text-align: center;
+      border: none;width:100%;overflow: hidden;
+      margin-right: 6px;height: 40px;
+    }
+    input:focused {border: none;}
+    ion-input{padding-left: 5px;padding-right: 5px;}
+.fp{text-decoration:underline;color: #fff;float: right;font-size: 13px;}
+.newUsr{color: #fff;text-align:center;font-size:13px;
+    span{text-decoration:underline;}
+}
